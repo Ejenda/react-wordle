@@ -1,9 +1,10 @@
-import { WORDS } from '../constants/wordlist'
+import { WORDS as words } from '../constants/wordlist'
 import { VALID_GUESSES } from '../constants/validGuesses'
 import { WRONG_SPOT_MESSAGE, NOT_CONTAINED_MESSAGE } from '../constants/strings'
 import { getGuessStatuses } from './statuses'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
-
+const grade: string = (window.location.hash ? window.location.hash.split('#')[1] : 'eighth')
+const WORDS = (words as any)[grade]
 export const isWordInWordList = (word: string) => {
   return (
     WORDS.includes(localeAwareLowerCase(word)) ||
@@ -75,8 +76,8 @@ export const localeAwareUpperCase = (text: string) => {
 }
 
 export const getWordOfDay = () => {
-  // January 1, 2022 Game Epoch
-  const epochMs = new Date(2022, 0).valueOf()
+  // March 30, 2022 Game Epoch
+  const epochMs = new Date(2022, 2, 30).valueOf()
   const now = Date.now()
   const msInDay = 86400000
   const index = Math.floor((now - epochMs) / msInDay)

@@ -1,4 +1,4 @@
-const gameStateKey = 'gameState'
+const gameStateKey = 'gameState' + (window.location.hash ? window.location.hash.split('#')[1] : 'eighth')
 const highContrastKey = 'highContrast'
 
 type StoredGameState = {
